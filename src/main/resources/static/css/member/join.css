@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.joinform{
+	font-size: 20px;
+}
+.joinform div:nth-child(1){
+	color: #408080;
+	font-weight: bold;
+}
+.email{
+	padding: 100px 0 20px 0;
+}
+.pass{
+	padding: 0px 0 20px 0;
+}
+.name{
+	padding: 0px 0 50px 0;
+}
+.join_btn{
+	padding-bottom: 100px;
+}

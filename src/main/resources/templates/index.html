@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+   <th:block th:insert="/HeaderFooter::header">
+   </th:block>
+   <main>
+   	  <h1>메인영역</h1>
+   	  <section>
+   	  	 <div class="main1-banner">
+   	  	 	<h1>메인영역1 비주얼</h1>
+			<a><img alt="메인베너1" src="/images/mainBanner1.png"></a>
+		 </div>
+   	  </section>
+      <section>
+	      <div>
+	      <h1>메인영역2 서비스</h1>
+	         <ul class="main2-icons flex-around">
+	            <li>
+	            	<a>
+	            		<img alt="클로바로고" src="/images/clova.png">
+	            		<span>CLOVA</span>
+	            	</a>
+	            </li>
+	            <li>
+	            	<a>
+	            		<img alt="네이버아이디로로그인" src="/images/naver.png">
+	            		<span>네이버 아이디로 로그인</span>
+	            	</a>
+	           	</li>
+	            <li>
+	            	<a>
+	            		<img alt="파파고" src="/images/papago.png">
+	            		<span>파파고</span>
+	            	</a>
+	            </li>
+	            <li>
+	            	<a>
+	            		<img alt="서비스API" src="/images/serviceAPI.png">
+	            		<span>서비스API</span>
+	            	</a>
+	            </li>
+	            <li>
+	            	<a>
+	            		<img alt="네이버 클라우드 플랫폼" src="/images/cloudPlatform.png">
+	            		<span>네이버 클라우드 플랫폼</span>
+	            	</a>
+	            </li>
+	         </ul>
+	      </div>
+	      <div>
+	      <h1>메인영역3 공지사항</h1>
+	         <ul class="main3-notice flex-around">
+	            <li><img alt="" src="/images/notice1.png"></li>
+	            <li><img alt="" src="/images/notice2.png"></li>
+	            <li><img alt="" src="/images/notice3.png"></li>
+	         </ul>
+	      </div>
+      </section>
+   </main>
+    <th:block th:insert="/HeaderFooter::footer">
+   	</th:block>
+   
+</body>
+</html>

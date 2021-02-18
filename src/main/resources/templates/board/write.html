@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/board/write.css">
+</head>
+<body>
+   <th:block th:insert="/HeaderFooter::header">
+   </th:block>
+   <main>
+		<section>
+			<div class="board-subject flex-around">
+				<span>개발자 포럼</span>
+				<span>개발자들끼리 API 관련 개발시 궁금한 점을 서로 묻고 답할 수 있는 열린 공간입니다.</span>
+			</div>
+		</section>
+		<section>
+			<div class="form-wrap flex-around">
+				<form action="/board/forum" method="post">
+					<div class="subject-wrap flex">
+						<div class="subject1">
+							<span>제목</span>
+						</div>
+						<div class="subject2">
+							<span><textarea rows="3" cols="40" name="subject" placeholder="제목을 입력해주세요"></textarea></span>
+						</div>
+					</div>
+					<div class="contents-wrap flex">
+						<div class="contents1">
+							<span>내용</span>
+						</div>
+						<div class="contents2">
+							<span><textarea rows="10" cols="40" name="contents" placeholder="내용을 입력해주세요"></textarea></span>
+						</div>
+						
+						<div>
+							<span><input type="hidden" name="creatorId" value="guest"/> </span>
+						</div>
+					</div>
+					
+					<button type="submit">새글쓰기</button>
+				</form>
+			</div>
+		</section>
+	</main>
+   <th:block th:insert="/HeaderFooter::footer">
+   </th:block>
+</body>
+</html>

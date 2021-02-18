@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+<header th:fragment="header" id="header">
+	  <h1>상단영역</h1>
+      <div class="header flex-between">
+	      <section>
+		   	<div class="header1-logo flex">
+				<h1>상단영역1 로고</h1>
+				<ul>
+					<li><a href="/"><img alt="로고" src="/images/logo.PNG"></a></li>
+				</ul>
+			</div>
+		  </section>
+	      <nav>
+	      	<h1>상단영역2 메인메뉴</h1>
+	        <ul class="header2-nav flex-between">
+	            <li><a href="#">Products</a></li>
+	            <li><a href="#">Documents</a></li>
+	            <li><a href="#">Application</a></li>
+	            <li><a href="#">NAVER D2</a></li>
+	            <li><a href="#">Support</a></li>
+	            <li><a href="/board/forum">Forum</a></li>
+	        </ul>
+	      </nav>
+	      <section>
+	      	<h1>상단영역3 유저메뉴</h1>
+	         <ul class="header3-user flex">
+	            <li>API상태</li>
+	            <li>검색</li>
+	            <li>로그인</li>
+	            <li><a href="/member/join">회원가입</a></li>
+	         </ul>
+      	 </section>
+    </div>
+   </header>
+   
+   <footer th:fragment="footer" id="footer">
+   	  <h1>푸터영역</h1>
+	  <div class="footer-wrap">
+   	  	<section>
+	   	  	<div class="footer-logo-info-wrap flex-between">
+		      <div>
+		      <h1>푸터영역1 사이트정보</h1>
+			      <div class="footer1-1">
+			         <h2>푸터영역1-1 NAVER DEVELOPERS(로고)</h2>
+			         <img alt="로고" src="/images/logo.PNG">
+			      </div>
+			      <div>
+			      	<h2>푸터영역1-2 INFO</h2>
+				        <div class="footer2 flex">
+					         <ul>
+					            <li><h3>Products</h3></li>
+					            <li>API이용안내</li>
+					            <li>CLOVA</li>
+					            <li>네이버 아이디로 로그인</li>
+					            <li>파파고</li>
+					            <li>CLOVA</li>
+					            <li>서비스API</li>
+					         </ul>
+					         <ul>
+					            <li><h3>Documents</h3></li>
+					            <li>API공통 가이드</li>
+					            <li>SDK &amp; Tools</li>
+					            <li>CLOVA</li>
+					            <li>네이버 아이디로 로그인</li>
+					            <li>파파고</li>
+					            <li>서비스API</li>
+					         </ul>
+					         <ul>
+					            <li><h3>Application</h3></li>
+					            <li>내 애플리케이션</li>
+					            <li>애플리케이션 등록</li>
+					            <li>CLOVA Platform Console β</li>
+					            <li>API제휴신청</li>
+					            <li>계정 설정</li>
+					         </ul>
+					         <ul>
+					            <li><h3>NAVER D2</h3></li>
+					            <li>D2 PROGRAM</li>
+					            <li>D2.NAVER.COM</li>
+					            <li>네이버 오픈소스</li>
+					         </ul>
+					         <ul>
+					            <li><h3>Support</h3></li>
+					            <li>공지사항</li>
+					            <li>API Status</li>
+					            <li>라이선스 준수</li>
+					         </ul>
+					         <ul>
+					            <li><h3>Forum</h3></li>
+					         </ul>
+				         </div>
+				      </div>
+				   </div>
+			   </div>
+     </section>
+     <section>
+     <div class="footer3-wrap">
+      	<h2>푸터영역2 회사정보</h2>
+         <ul class="flex">
+            <li>이용약관</li>
+            <li>개인정보처리방침</li>
+            <li>제휴신청</li>
+            <li>개발자포럼</li>
+            <li>개발자채용</li>
+         </ul>
+         <ul class="flex">
+            <li>NAVER</li>
+            <li>Copyright ©</li>
+            <li>NAVER Corp.</li>
+            <li>All Rights Reserved.</li>
+         </ul>
+        </div>
+      </section>
+     </div>
+   </footer>
+</body>
+</html>

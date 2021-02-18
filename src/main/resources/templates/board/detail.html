@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/board/detail.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#edit_form").hide();
+			$("#edit_btn").click(edit_btn_clicked);
+			//$("#edit_done_btn").click(edit_done_btn_clicked);
+			
+		});
+		
+		function edit_btn_clicked(){ //수정 버튼 누르면
+			$("#edit_form").show(); //수정폼 나와주세요
+			$("#detail_form").hide(); //원래 detail폼 숨겨주세요
+		}
+		
+	</script>
+</head>
+<body>
+   <th:block th:insert="/HeaderFooter::header">
+   </th:block>
+   <main>
+		<section>
+			<div class="board-subject flex-around">
+				<span>개발자 포럼</span>
+				<span>개발자들끼리 API 관련 개발시 궁금한 점을 서로 묻고 답할 수 있는 열린 공간입니다.</span>
+			</div>
+		</section>
+		<section>
+			<div id="detail_form" class="form-wrap flex-around">
+				<form>
+					<div class="subject-wrap flex">
+						<div class="subject1">
+							<span>제목</span>
+						</div>
+						<div class="subject2">
+							[[${detail.contents}]]
+						</div>
+					</div>
+					<div class="contents-wrap flex">
+						<div class="contents1">
+							<span>내용</span>
+						</div>
+						<div class="contents2">
+							<span>[[${detail.subject}]]</span>
+						</div>
+						<div>
+							<span><input type="hidden" name="creatorId" value="guest"/> </span>
+						</div>
+					</div>
+					<input type="button" id="edit_btn" value="수정">
+				</form>
+			</div>
+			
+				<!-- ------------------------수정하기 눌렀을때 변환되는 폼---------------------------- -->
+			<div id="edit_form" class="form-wrap flex-around">
+				<form action="/board/detail" method="post">
+					<div class="subject-wrap flex">
+					<input type="hidden" th:value="${detail.bno}" name="bno">
+						<div class="subject1">
+							<span>제목</span>
+						</div>
+						<div class="subject2">
+							<span>
+								<textarea rows="3" cols="40" name="subject">[[${detail.contents}]]</textarea>
+							</span>
+						</div>
+					</div>
+					<div class="contents-wrap flex">
+						<div class="contents1">
+							<span>내용</span>
+						</div>
+						<div class="contents2">
+							<span>
+								<textarea rows="10" cols="40" name="contents">[[${detail.subject}]]</textarea>
+							</span>
+						</div>
+						<div>
+							<span><input type="hidden" name="creatorId" value="guest"/></span>
+						</div>
+					</div>
+					<input type="submit" id="edit_done_btn" value="수정완료">
+				<a th:href="|/board/delete/${detail.bno}|"><input type="button" value="삭제"></a>
+				</form>
+			</div>
+		</section>
+	</main>
+   <th:block th:insert="/HeaderFooter::footer">
+   </th:block>
+</body>
+</html>

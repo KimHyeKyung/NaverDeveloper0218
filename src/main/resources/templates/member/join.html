@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/board/write.css">
+	<link rel="stylesheet" href="/css/member/join.css">
+</head>
+<body>
+   <th:block th:insert="/HeaderFooter::header">
+   </th:block>
+   <main>
+		<section>
+			<div class="board-subject flex-around">
+				<span>회원가입</span>
+				<span>회원가입으로 개발자들을 위한 네이버의 다양한 기술들을 만나보세요</span>
+			</div>
+		</section>
+		<section>
+			<div class="flex-around joinform">
+				<form action="/member/join" method="post">
+					<div class="email">
+						<div>이메일</div>
+						<input type="text"  name="email" placeholder="이메일입력"/>
+					</div>
+					<div class="pass">
+						<div>비밀번호</div>
+						<input type="password" name="password" placeholder="비밀번호입력"/>
+					</div>
+					<div class="name">
+						<div>이름</div>
+						<input type="text" name="name" placeholder="이름입력"/>
+					</div>
+					<div class="join_btn">
+						<input type="submit" value="회원가입">
+					</div>
+				</form>
+			</div>
+		</section>
+	</main>
+   <th:block th:insert="/HeaderFooter::footer">
+   </th:block>
+</body>
+</html>
