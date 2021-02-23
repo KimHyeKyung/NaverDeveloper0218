@@ -12,7 +12,7 @@ public interface BoardService {
 
 	void saveWrite(BoardDto dto);
 
-	BoardEntity getDetailList(long bno);
+	BoardDto getDetailList(long bno);
 
 	void updateDetail(BoardDto dto);
 

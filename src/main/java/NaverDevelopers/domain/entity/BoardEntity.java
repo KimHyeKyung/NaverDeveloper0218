@@ -14,6 +14,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
+import NaverDevelopers.domain.dto.BoardDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -55,10 +56,26 @@ public class BoardEntity {
 		this.createdDate = createdDate;
 	}
 
-	public void updateDetail(String subject, String contents) {
-		this.subject = subject;
-		this.contents = contents;
+
+
+/*쌤이 쓴거 트랜젝셔널처리 안할때 쓰는거
+ 	//수정처리를 위한 메서드
+	public BoardEntity updateDetail(BoardDto dto) {
+		this.subject = dto.getSubject();
+		this.contents = dto.getContents();
+		return this;//this를 리턴하는게 특징
 	}
+	
+*/
+
+	//트랜젝셔널처리할때 쓰는거
+	public BoardEntity setUpdate(BoardDto dto) {
+		this.subject = dto.getSubject();
+		this.contents = dto.getContents();
+		return this;
+	
+	}
+
 
 
 

@@ -16,7 +16,7 @@ public class MemberServiceImpl implements MemberService{
 	public void doJoin(MemberDto dto) {
 		
 		//저장
-		repository.save(dto.toEntity());
+		//repository.save(dto.toEntity());
 		
 		
 	}

@@ -52,8 +52,8 @@ public class BoardController {
 	//포럼페이지에서 제목을 누르면 detail페이지로 넘어가서 내용보여주기
 	@GetMapping("/board/detail/{bno}")
 	public ModelAndView getDetailList(@PathVariable long bno) {
-		ModelAndView mv = new ModelAndView("/board/detail");
-		BoardEntity detail = service.getDetailList(bno);
+		ModelAndView mv = new ModelAndView("/board/detail");//여기는 /board/detail.html이라 경로가 아니라서 뒤에 {bno}값
+		BoardDto detail = service.getDetailList(bno);
 		mv.addObject("detail", detail);//페이지로 이동할때 detail이란 이름으로 데이터 갖고가자
 		return mv;
 	}
@@ -63,6 +63,7 @@ public class BoardController {
 	public String updateDetail(BoardDto dto) {
 		service.updateDetail(dto);
 		return "redirect:/board/detail/"+dto.getBno();
+
 	}
 	
 
@@ -70,7 +71,7 @@ public class BoardController {
 	@GetMapping("/board/delete/{bno}")
 	public String deleteDetail(@PathVariable long bno) {
 		service.deleteDetail(bno);
-		return "redirect:/board/forum";
+		return "redirect:/board/forum"; //데이터를 다시 갖고와야하니 redirect쓴다
 	}
 	
 	
