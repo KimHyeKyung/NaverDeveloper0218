@@ -30,7 +30,7 @@
 					</tr>
 					<tr th:each="dto:${list}">
 						<td>[[${dto.no}]]</td>
-						<td><img th:src="${dto.img.fileUrl}" width="150px"/></td>
+						<td><a th:href="|/img/detail/${dto.no}|"><img th:src="${dto.img.fileUrl}" width="150px"/></a></td>
 						<td>[[${dto.subject}]]</td>
 						<td>[[${dto.contents}]]</td>
 					</tr>

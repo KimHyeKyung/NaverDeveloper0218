@@ -14,5 +14,7 @@ public interface ImgService {
 
 	List<ImgDto> getListAll();
 
+	ImgDto getDetail(long no);
+
 
 }

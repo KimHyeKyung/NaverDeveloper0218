@@ -3,7 +3,6 @@ package NaverDevelopers.service;
 import java.util.List;
 
 import NaverDevelopers.domain.dto.BoardDto;
-import NaverDevelopers.domain.entity.BoardEntity;
 
 public interface BoardService {
 

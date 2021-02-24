@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import NaverDevelopers.domain.dto.ImgDto;
 import NaverDevelopers.domain.dto.ImgRequestDto;
-import NaverDevelopers.domain.entity.Img;
 import NaverDevelopers.service.ImgService;
 
 @Controller
@@ -48,6 +48,16 @@ public class ImgController {
 		model.addAttribute("list",list);
 		
 		return "/img/list";
+	}
+	
+	//detail페이지로 가주세요ㅣㅣ
+	@GetMapping("/img/detail/{no}")
+	public String detail(@PathVariable long no, Model model) { //Model model: 정보 가져가야해서
+		
+		ImgDto detail = service.getDetail(no);
+		model.addAttribute("detail",detail);
+		
+		return "/img/detail";
 	}
 
 	

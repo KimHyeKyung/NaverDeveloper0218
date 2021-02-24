@@ -81,4 +81,14 @@ public class ImgServiceImpl implements ImgService {
 	}
 
 
+	//detail페이지
+	@Override
+	public ImgDto getDetail(long no) {
+		return repositoy.findById(no)
+						.map(ImgDto::new) //이미지로 올라오는 아이를 ImgDto로 매핑해주세요 
+						.orElse(null);
+
+	}
+
+
 }

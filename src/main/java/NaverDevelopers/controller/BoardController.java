@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import NaverDevelopers.domain.dto.BoardDto;
-import NaverDevelopers.domain.entity.BoardEntity;
 import NaverDevelopers.service.BoardService;
 
 @Controller
