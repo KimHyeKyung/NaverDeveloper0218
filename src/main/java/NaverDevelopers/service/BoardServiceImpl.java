@@ -67,9 +67,10 @@ public class BoardServiceImpl implements BoardService{
 			repository.save(entity);
 		*/
 	//--------------------------
-		// 이거는 트랜잭션 처리해야지만 사용가능
+		// 이거는 트랜잭션@Transactional 처리해야지만 사용가능
 		repository.findById(dto.getBno())
 					.map(e->e.setUpdate(dto)) // 따로 save하지 않아도 update처리 -> 트랜젝션이 처리되어서(영속성)
+											  // Entity에 적은 update메서드의 this가 BoardEntity타입이니 여기서 쓰려고 return this한거다
 					.orElse(null);
 		
 	}

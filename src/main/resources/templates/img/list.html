@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/board/forum.css">
+</head>
+<body>
+   <th:block th:insert="/HeaderFooter::header">
+   </th:block>
+   <main>
+		<section>
+			<div class="board-subject flex-around">
+				<span>개발자 포럼</span>
+				<span>개발자들끼리 API 관련 개발시 궁금한 점을 서로 묻고 답할 수 있는 열린 공간입니다.</span>
+			</div>
+		</section>
+		<section>
+			<div class="table-center">
+				<table class="forum-table">
+					<div class="write-btn">
+						<a href="/board/write"><button>글쓰기</button></a>
+					</div>
+					<tr>
+						<td>글번호</td>
+						<td>이미지</td>
+						<td>제목</td>
+						<td>내용</td>
+					</tr>
+					<tr th:each="dto:${list}">
+						<td>[[${dto.no}]]</td>
+						<td><img th:src="${dto.img.fileUrl}" width="150px"/></td>
+						<td>[[${dto.subject}]]</td>
+						<td>[[${dto.contents}]]</td>
+					</tr>
+				</table>
+			</div>
+		</section>
+	</main>
+   <th:block th:insert="/HeaderFooter::footer">
+   </th:block>
+</body>
+</html>
