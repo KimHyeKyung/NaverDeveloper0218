@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import NaverDevelopers.domain.dto.ImgDto;
@@ -50,7 +51,7 @@ public class ImgController {
 		return "/img/list";
 	}
 	
-	//detail페이지로 가주세요ㅣㅣ
+	//detail페이지로 가주세요!!
 	@GetMapping("/img/detail/{no}")
 	public String detail(@PathVariable long no, Model model) { //Model model: 정보 가져가야해서
 		
@@ -60,6 +61,46 @@ public class ImgController {
 		return "/img/detail";
 	}
 
+	//수정버튼누르면 post로 넘어가는거 처리
+	@PostMapping("/img/edit")
+	public String edit(ImgRequestDto dto) {
+		service.edit(dto);
+		
+		return "redirect:/img/detail/"+dto.getNo(); //위에있는 detail페이지로 이동
+	}
+	
+	//삭제
+	@GetMapping("/img/delete/{no}")
+	public String delete(@PathVariable long no) {
+		service.delete(no);
+		return "redirect:/img/list";
+	}
+	
+	//이미지 업로드 ajax에 넣은 주소
+	//복붙해서 다른곳에서 쓰라ㅏ아아
+	//이미지 업로드하면 서버에 전송완료!
+	@ResponseBody
+	@PostMapping("/img/preView")
+	public void preView(MultipartFile file, String temp) throws IOException { // ajax에 "file"로 넣은 key값 파라미터에 넣어준다
+		//System.out.println(file.getOriginalFilename());
+		////파일이 넘어왔으니 임시파일에 넣어야한다.////
+		System.out.println("temp :"+temp);
+		//최초 temp=""
+		//다음 선택할때 이전에 선택된 temp의 값이 나온다
+		service.uploadTemp(file,temp); //서비스한테 일 시키자
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

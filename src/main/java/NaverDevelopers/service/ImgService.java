@@ -16,5 +16,11 @@ public interface ImgService {
 
 	ImgDto getDetail(long no);
 
+	void edit(ImgRequestDto dto);
+
+	void delete(long no);
+
+	void uploadTemp(MultipartFile file, String temp) throws IOException;
+
 
 }

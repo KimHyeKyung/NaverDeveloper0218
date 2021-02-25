@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import NaverDevelopers.domain.dto.ImgRequestDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -44,6 +45,13 @@ public class Img {
  		this.subject = subject;
 		this.contents = contents;
 		this.img = img;
+	}
+	
+	//수정된 데이터를 바꾸기 위해서는 set메서드가 있어야 하는데 없으니깐 따로 메서드를 만들자 update로 
+	public Img update(ImgRequestDto dto) {
+		this.subject = dto.getSubject();
+		this.contents = dto.getContents();
+		return this;
 	}
 
 	

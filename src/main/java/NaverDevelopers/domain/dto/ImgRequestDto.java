@@ -9,8 +9,10 @@ import lombok.NoArgsConstructor;
 @Data
 public class ImgRequestDto {
 
+	private long no;
 	private String subject;
 	private String contents;
+	private String temp;
 	
 	public Img toEntity(ImgFile fileEntity){
 		//return Img.builder().build(); == new Img();

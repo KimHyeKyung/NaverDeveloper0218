@@ -18,13 +18,14 @@
 			$("#edit_form").show(); //수정폼 나와주세요
 			$("#detail_form").hide(); //원래 detail폼 숨겨주세요
 		}
-		
 	</script>
 </head>
 <body>
+
    <th:block th:insert="/HeaderFooter::header">
    </th:block>
-   <main>
+   
+   <main >
 		<section>
 			<div class="board-subject flex-around">
 				<span>개발자 포럼</span>
@@ -32,54 +33,70 @@
 			</div>
 		</section>
 		<section>
-			<div id="detail_form" class="form-wrap flex-around">
-				
-					<div class="subject-wrap flex">
-						<div class="subject2">
-							<span>no</span>
-						</div>
-						<div class="subject2">
-							[[${detail.no}]]
-						</div>
-					</div>
-					<div class="subject-wrap flex">
-						<div class="subject1">
-							<span>이미지</span>
-						</div>
-						<div class="subject2">
-							<img th:src="${detail.img.fileUrl}" width="50px">
-						</div>
-					</div>
-					<div class="contents-wrap flex">
-						<div class="subject1">
-							<span>제목</span>
-						</div>
-						<div class="subject2">
-							<span>[[${detail.subject}]]</span>
-						</div>
-						<div class="contents1">
-							<span>내용</span>
-						</div>
-						<div class="contents2">
-							<span>[[${detail.contents}]]</span>
-						</div>
-						<div>
-							<span><input type="hidden" name="creatorId" value="guest"/> </span>
-						</div>
-					</div>
-					<input type="button" id="edit_btn" value="수정">
-				
-			</div>
-			
+			<table id="detail_form">
+				<tr>
+					<td>no</td>
+					<td th:text="${detail.no}"></td>
+				</tr>
+				<tr>
+					<td>이미지</td>
+					<td>
+						<img th:src="${detail.img.fileUrl}" width="150px">
+					</td>
+				</tr>
+				<tr>
+					<td>제목</td>
+					<td>[[${detail.subject}]]</td>
+				</tr>
+				<tr>
+					<td>내용</td>
+					<td>[[${detail.contents}]]</td>
+				</tr>
+				<tr>
+					
+					<td colspan="2" >
+						
+						<button type="submit" id="edit_btn">수정</button>
+						<a href="#"><button type="button">취소</button></a>
+					</td>
+				</tr>
+			</table>
 				<!-- ------------------------수정하기 눌렀을때 변환되는 폼---------------------------- -->
-			
-			
-			
-			
-			
+				<form action="/img/edit" method="post" id="edit_form">
+					<table>
+						<tr>
+							<td>no</td>
+							<td th:text="${detail.no}"></td>
+						</tr>
+						<tr>
+							<td>이미지</td>
+							<td>
+								<img th:src="${detail.img.fileUrl}" width="150px">
+							</td>
+						</tr>
+						<tr>
+							<td>제목</td>
+							<td><input type="text" name="subject" th:value="${detail.subject}"></td>
+						</tr>
+						<tr>
+							<td>내용</td>
+							<td><input type="text" name="contents" th:value="${detail.contents}"></td>
+						</tr>
+						<tr>
+							
+							<td colspan="2" >
+								<input type="hidden" name="no" th:value="${detail.no}">
+								<button type="submit">수정완료</button>
+								<a th:href="|/img/delete/${detail.no}|"><button type="button">삭제</button></a>
+							</td>
+						</tr>
+					</table>
+				</form>
 		</section>
 	</main>
+	
    <th:block th:insert="/HeaderFooter::footer">
    </th:block>
+   
 </body>
 </html>

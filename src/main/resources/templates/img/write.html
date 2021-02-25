@@ -3,11 +3,94 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="/css/index.css">
 	<link rel="stylesheet" href="/css/board/write.css">
+	<script type="text/javascript">
+		$(function(){
+			$("#fileInput").change(fileSelected);
+		});
+		
+		function fileSelected(){
+			alert("파일선택완료");
+			var formData = new FormData();
+			var file = $("#fileInput")[0].files[0];//단일태그라서 [0]
+			formData.append("file", file);//append(key,value)
+			formData.append("temp", $("#temp").val());//append(key,value)
+			
+			$("#fileInput");
+			$.ajax({
+					url: "/img/preView",
+					type: "POST",
+					data: formData,
+					processData: false, //processData: false로 지정해줘야하는 특징이 있다 (데이터 전송방법 기본값이 문자열이라서 false로 바꿔준다)
+					contentType: false, //contentType: false로 지정해줘야하는 특징이 있다 (데이터 전송방법 기본값이 문자열이라서 false로 바꿔준다)
+					success: function(fileUrl){
+						//여기 백그라운드에 이미지 깔거에요
+						$("#preView-Img").css("background-image", "url("+fileUrl+")");
+						//bin파일에 이미지 쌓이니깐 삭제하기 위해서 이미지 경로를 여기서도 받을게요
+						$("#temp").attr("value",fileUrl);
+						
+					}
+			});
+		}
+	
+	
+	</script>
+	
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		#fileInput{
+			display: none;
+		}
+		
+		#fileLable{
+			display: inline-block;
+			width: 100px;
+			height: 100px;
+			border: 1px dashed gray;
+			text-align: center;
+			line-height: 100px;
+			font-size: 20px;
+			cursor: pointer;
+		}
+		#fileLable:hover{
+			color: green;
+			border-color: green;
+			border: 2px dashed;
+		}
+		input{
+			margin: 5px 0;
+		}
+		input[type=text]{
+			padding: 0.5em 1em;
+			width: 150px;
+			transition: width .2s;
+		}
+		input[type=text]:focus{
+			outline-color: green;
+			width: 170px;
+		}
+		#file-wrap{
+			position: relative;
+		}
+		/* 이미지 넣기 */
+		#preView-Img{
+			position: absolute;
+			top:0;  /* absolute주면 top,left가능 */
+			left:0;
+			display: block;
+			width: 100px;
+			height: 100px;
+			background-size: cover;
+			z-index: -1;
+		}
+		
+	</style>
 </head>
 <body>
-	<p>글쓰기 페이지</p>
    <th:block th:insert="/HeaderFooter::header">
    </th:block>
    
@@ -16,9 +99,12 @@
 			<div class="form-wrap flex-around">
 				<!-- enctype꼭 설정!! -->
 				<form action="/img/write" method="post" enctype="multipart/form-data">
-					<p>
-						<input type="file" name="file">
-					</p>
+					<div id="file-wrap">
+						<label for="fileInput" id="fileLable">+</label>
+						<input type="file" name="file" id="fileInput">
+						<input type="hidden" name="temp" id="temp">
+						<span id="preView-Img"></span><!--  여기 백그라운드에 이미지 깔거에요 -->
+					</div>
 					<p>
 						<input type="text" name="subject"  placeholder="subject">
 					</p>
@@ -26,7 +112,7 @@
 						<input type="text" name="contents"  placeholder="contents">
 					</p>
 					<p>
-						<input value="글쓰기완료" type="submit">
+						<input value="이미지 업로드" type="submit">
 					</p>
 				</form>
 			</div>
