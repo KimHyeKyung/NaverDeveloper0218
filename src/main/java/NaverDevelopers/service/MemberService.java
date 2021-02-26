@@ -4,6 +4,7 @@ import NaverDevelopers.domain.dto.MemberDto;
 
 public interface MemberService {
 
-	void doJoin(MemberDto dto);
+	void save(MemberDto dto);
+
 
 }

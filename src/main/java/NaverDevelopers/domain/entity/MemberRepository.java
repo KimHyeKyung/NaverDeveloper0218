@@ -1,8 +1,10 @@
 package NaverDevelopers.domain.entity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface MemberRepository extends JpaRepository<MemberEntity, String>{
+@Repository
+public interface MemberRepository extends JpaRepository<MemberEntity, Long>{
 
-
+	
 }

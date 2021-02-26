@@ -4,6 +4,7 @@ spring:
     password: 12345678
     url: jdbc:mysql://34.64.164.176:3306/the?serverTimezone=Asia/Seoul
     username: the
+    
   jpa:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
@@ -11,6 +12,18 @@ spring:
     hibernate:
       use-new-id-generator-mappings: true
     show-sql: true
+    open-in-view: false
+    
   servlet:
     multipart:
       max-file-size: 10MB
+
+#로그기록 셋팅하기
+#사용할 컨트롤러에 @Sl4fj넣어주기!여기선 ImgController에 넣었음
+logging:
+  file:
+    path: /logs #D드라이브 폴더안에 logs폴더 만들어주세요
+  level:
+    '[NaverDevelopers.controller.ImgController]': debug #debug레벨 버그만 넣어주세요
+      
+ 

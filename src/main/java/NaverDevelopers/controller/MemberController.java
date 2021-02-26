@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import NaverDevelopers.domain.dto.MemberDto;
 import NaverDevelopers.service.MemberService;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 public class MemberController {
 
@@ -15,18 +17,17 @@ public class MemberController {
 	private MemberService service;
 	
 //-------------------------------------------------------------------
-	
-	//회원가입 페이지로 가주세요
+
 	@GetMapping("/member/join")
 	public String join() {
-		return"/member/join";
+		return "/member/join";
 	}
 	
-	//회원가입버튼누르면 DB에 저장하고 index페이지로 넘어가기
+	//회원가입버튼 누르면 회원가입 정보 DB에 저장
 	@PostMapping("/member/join")
-	public String doJoin(MemberDto dto) {
-		service.doJoin(dto);
-		return"redirect:/";
+	public String join(MemberDto dto) {
+		log.debug("dto:"+dto);
+		service.save(dto);
+		return "redirect:/";
 	}
-	
 }

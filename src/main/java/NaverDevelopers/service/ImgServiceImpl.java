@@ -17,6 +17,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.mysql.cj.log.Log;
+
 import NaverDevelopers.domain.dto.ImgDto;
 import NaverDevelopers.domain.dto.ImgRequestDto;
 import NaverDevelopers.domain.entity.Img;
@@ -53,8 +55,6 @@ public class ImgServiceImpl implements ImgService {
 		String orgName = file.getOriginalFilename(); //위치폴더
 		String fileUrl = "/images/upload/" + newName;
 		long fileSize = file.getSize();
-		
-		
 		
 		ImgFile fileEntity = new ImgFile(orgName, newName, fileSize, fileUrl); //ImgFile에 셋팅
 		

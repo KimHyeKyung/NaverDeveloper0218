@@ -15,7 +15,9 @@ import org.springframework.web.multipart.MultipartFile;
 import NaverDevelopers.domain.dto.ImgDto;
 import NaverDevelopers.domain.dto.ImgRequestDto;
 import NaverDevelopers.service.ImgService;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j  //(  syso말고 log.debug()로 활용하자  )
 @Controller
 public class ImgController {
 	
@@ -28,14 +30,13 @@ public class ImgController {
 		return"/img/write"; //viewName:/img/write.html
 	}
 	
+	//이미지 등록
 	//MultipartFile로 받으면 파일만 받아지는거
 	//parts를 사용하면 제목 내용 파일 한번에 받아짐
 	//dto를 사용하면 되니깐 parts보다는 MultipartFile로 사용하자
 	//파일은 MultipartFile로 제목내용은 dto로 받자
 	@PostMapping("/img/write")
 	public String write(MultipartFile file, ImgRequestDto dto) throws IOException {
-		//System.out.println(file.getOriginalFilename());
-		//System.out.println(dto);
 		service.uploadAndSave(file,dto);
 		return "redirect:/img/list";
 	}
