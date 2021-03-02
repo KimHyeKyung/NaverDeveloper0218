@@ -1,9 +1,12 @@
 package NaverDevelopers.controller;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import NaverDevelopers.domain.dto.MemberDto;
 import NaverDevelopers.service.MemberService;
@@ -30,4 +33,11 @@ public class MemberController {
 		service.save(dto);
 		return "redirect:/";
 	}
+	
+	@ResponseBody
+	@PostMapping("/member/emailCheck") //$.post에서 요청주소가 "/member/emailCheck"이니 $.post랑 연결
+	public void emailCheck(String email) throws IOException {//key&value의 "email"이라서 String
+		service.Check(email);
+	}
+	
 }

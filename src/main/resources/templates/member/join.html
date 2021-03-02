@@ -5,6 +5,43 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/index.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	/* jquery ready */
+	$(function(){
+		$("#email").blur(emailCheck); //blur:포커스가 들어갔다가 나왔을때 자기자신만 체크한다
+	});
+	
+	function emailCheck(){
+		var _email = $("#email").val().trim();
+		if(_email==""){
+			$(this).next().text("이메일을 입력해주세요!"); //	$(this)지금선택한input의 .next()다음(span)에 .text글자 넣어주세요	
+			return;
+			//val, text를 쓸 수있고 안의 내용을 읽어들인다.								
+			//trim()을 이용해서 공백처리 꼭 해주기
+			//val:value값을 ()안에 셋팅해주거나 읽어들인다 -> form의 요소들
+			//text:태그 안에 써져있는 글자를 읽는다 <div>aa</div> <p>bb</p>안에 써져있는 글자들을 읽는다
+			
+		}									
+			//email체크 ajax 
+			//post ajax : $(selector).post(URL,data,function(data,status,xhr),dataType)
+			$.post(
+					"/member/emailCheck",
+					{"email": _email},
+					function(result){
+						if(result==1){
+							$(".msg").text("사용가능한 이메일입니다.").css("color","green");
+						}else{
+							$(".msg").text("이미 존재하거나 탈퇴한 이메일입니다.").css("color","red");
+						}
+					}
+			);
+		
+	}
+
+</script>
+
+
 <style type="text/css">
 *{
 	margin: 0;
@@ -59,7 +96,8 @@ ol,ul{
 				<dl>
 					<dt>Email adress<span>*</span></dt>
 					<dd>
-						<input type="text" name="email">
+						<input id="email" type="text" name="email">
+						<span class="msg"></span>
 					</dd>
 				</dl>
 				<dl>
