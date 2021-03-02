@@ -3,6 +3,7 @@ package NaverDevelopers.domain.dto;
 import java.time.LocalDateTime;
 
 import NaverDevelopers.domain.entity.MemberEntity;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,6 +18,7 @@ public class MemberDto {
 	private LocalDateTime regDate; //자동으로 셋팅되어서 builder에 포함 안시켰다
 	
 	
+
 	public MemberEntity toEntity() {
 		return MemberEntity.builder()
 							.email(email)

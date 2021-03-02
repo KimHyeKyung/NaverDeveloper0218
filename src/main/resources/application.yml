@@ -25,5 +25,6 @@ logging:
     path: /logs #D드라이브 폴더안에 logs폴더 만들어주세요
   level:
     '[NaverDevelopers.controller.ImgController]': debug #debug레벨 버그만 넣어주세요
+    '[NaverDevelopers.service]': debug
       
  

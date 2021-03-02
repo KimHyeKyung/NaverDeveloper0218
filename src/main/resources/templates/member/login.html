@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/css/index.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<style type="text/css">
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+ol,ul{
+	list-style: none;
+}
+.page-tit{
+	font-size: 48px;
+	font-weight: 700px;
+}
+.main-wrap{
+	width: 350px;
+	margin: 0 auto;
+}
+.main-wrap form span{
+	color: red;
+}
+.main-wrap form dl{
+	margin-bottom: 20px;
+}
+.main-wrap form input{
+	width: 100%;
+	padding: 0.5em 1em;
+}
+.main-wrap form button{
+	width: 100%;
+	padding: 0.5em 1em;
+	background-color: #6688cc;
+	color: #fff;
+}
+</style>
+</head>
+
+<body>
+   <th:block th:insert="/HeaderFooter::header">
+   </th:block>
+   
+   <main>
+   <h1>join</h1>
+		<div class="main-wrap">
+			<p class="page-tit">Login</p>
+			<form action="/member/login" method="post">
+				
+				<dl>
+					<dt>Email adress<span>*</span></dt>
+					<dd>
+						<input id="email" type="text" name="email">
+						<span class="msg"></span>
+					</dd>
+				</dl>
+				<dl>
+					<dt>password<span>*</span></dt>
+					<dd>
+						<input type="password" name="password">
+					</dd>
+				</dl>
+				<ul>
+					<li>
+						<button type="submit">Login</button>
+					</li>
+				</ul>
+			
+			</form>
+		</div>
+	</main>
+	
+	
+	
+	
+   <th:block th:insert="/HeaderFooter::footer">
+   </th:block>
+</body>
+</html>

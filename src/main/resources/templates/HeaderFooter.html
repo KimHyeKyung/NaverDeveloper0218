@@ -35,7 +35,15 @@
 	         <ul class="header3-user flex">
 	            <li>API상태</li>
 	            <li>검색</li>
-	            <li>로그인</li>
+	            <li><a th:if="${session.logInfo}==null" href="/member/login">로그인</a></li>
+	            <li>
+	            	<th:block th:if="${session.logInfo}">
+	            		<span th:text="${session.logInfo.name}"></span>
+	            		<a href="/member/logout">로그아웃</a>
+	            	</th:block>
+	            
+	            </li>
+	            <!-- <li><a href="/member/logout">로그아웃</a></li> -->
 	            <li><a href="/member/join">회원가입</a></li>
 	         </ul>
       	 </section>

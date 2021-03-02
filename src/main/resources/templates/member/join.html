@@ -16,15 +16,17 @@
 		var _email = $("#email").val().trim();
 		if(_email==""){
 			$(this).next().text("이메일을 입력해주세요!"); //	$(this)지금선택한input의 .next()다음(span)에 .text글자 넣어주세요	
-			return;
-			//val, text를 쓸 수있고 안의 내용을 읽어들인다.								
-			//trim()을 이용해서 공백처리 꼭 해주기
-			//val:value값을 ()안에 셋팅해주거나 읽어들인다 -> form의 요소들
-			//text:태그 안에 써져있는 글자를 읽는다 <div>aa</div> <p>bb</p>안에 써져있는 글자들을 읽는다
+			return; //return은 함수종료제어권이있다
+					//emailCheck()함수가 돌아갈때 _email이 공백이면 msg찍을 필요 없이 그냥 종료해버린다.
 			
-		}									
-			//email체크 ajax 
-			//post ajax : $(selector).post(URL,data,function(data,status,xhr),dataType)
+			/*추가 설명
+			- val, text를 쓸 수있고 안의 내용을 읽어들인다.								
+			- trim()을 이용해서 공백처리 꼭 해주기
+			- val:value값을 ()안에 셋팅해주거나 읽어들인다 -> form의 요소들
+			- text:태그 안에 써져있는 글자를 읽는다 <div>aa</div> <p>bb</p>안에 써져있는 글자들을 읽는다
+			*/
+		}							
+			//email체크 ajax, $.post: $(selector).post(URL,data,function(data,status,xhr),dataType)
 			$.post(
 					"/member/emailCheck",
 					{"email": _email},
@@ -36,8 +38,9 @@
 						}
 					}
 			);
-		
+
 	}
+	
 
 </script>
 

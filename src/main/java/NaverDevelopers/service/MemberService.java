@@ -12,4 +12,10 @@ public interface MemberService {
 	void Check(String email) throws IOException;
 
 
+	void login(MemberDto dto);
+
+
+	void logout();
+
+
 }
